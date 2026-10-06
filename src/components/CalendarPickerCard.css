@@ -1,0 +1,159 @@
+.clean-cal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 22px;
+}
+
+.clean-cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.clean-cal-month {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-transform: capitalize;
+  letter-spacing: -0.02em;
+}
+
+.clean-cal-nav {
+  display: flex;
+  gap: 6px;
+}
+
+.clean-cal-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  transition: all var(--transition-smooth);
+}
+
+.clean-cal-nav-btn:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+
+.clean-cal-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.clean-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: center;
+}
+
+.clean-cal-day-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  padding-bottom: 10px;
+}
+
+.clean-cal-day-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  transition: all var(--transition-smooth);
+  background: transparent;
+}
+
+.clean-cal-day-cell:hover:not(:disabled) {
+  background-color: var(--bg-subtle);
+}
+
+.clean-cal-day-cell.selected {
+  background-color: var(--text-main) !important;
+  color: var(--text-white) !important;
+}
+
+.clean-cal-day-cell:disabled {
+  color: var(--border-card);
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.clean-cal-day-cell.empty {
+  visibility: hidden;
+}
+
+/* Slots Section */
+.clean-slots-box {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.clean-slots-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.clean-slots-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.clean-slots-date-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Flexible Time Slots Grid */
+.clean-slots-grid-flexible {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.clean-time-chip {
+  padding: 12px 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-align: center;
+  transition: all var(--transition-smooth);
+}
+
+.clean-time-chip:hover:not(:disabled) {
+  border-color: var(--border-hover);
+  background: var(--bg-subtle);
+}
+
+.clean-time-chip.selected,
+.clean-time-chip.selected:hover {
+  border-color: var(--accent-blue) !important;
+  background-color: var(--accent-blue) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(1, 120, 255, 0.25);
+}
+
+.clean-time-chip:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: var(--bg-subtle);
+  text-decoration: line-through;
+}

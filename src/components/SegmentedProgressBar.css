@@ -1,0 +1,85 @@
+.clean-stepper {
+  padding: 18px 24px 16px 24px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  z-index: 10;
+}
+
+.clean-stepper-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.clean-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-subtle);
+  transition: all var(--transition-smooth);
+}
+
+.clean-back-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-main);
+}
+
+.clean-step-indicator {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.clean-step-indicator strong {
+  color: var(--text-main);
+}
+
+.clean-stepper-bars {
+  display: flex;
+  gap: 6px;
+  height: 4px;
+}
+
+.clean-stepper-bar {
+  flex: 1;
+  height: 100%;
+  background-color: var(--border-subtle);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition-smooth);
+}
+
+.clean-stepper-bar.filled {
+  background-color: var(--accent-blue);
+}
+
+.clean-stepper-bar.current {
+  background-color: var(--text-main);
+}
+
+.clean-stepper-titles {
+  margin-top: 18px;
+}
+
+.clean-stepper-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.clean-stepper-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  line-height: 1.45;
+}
