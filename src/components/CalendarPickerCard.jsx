@@ -146,7 +146,6 @@ export default function CalendarPickerCard({
                 ? 'Orario nel weekend (tutto il giorno)'
                 : 'Orario serale feriale (19:00 - 21:00)'}
             </span>
-            <span className="clean-slots-date-badge">{selectedDate}</span>
           </div>
 
           <div className="clean-slots-grid-flexible">

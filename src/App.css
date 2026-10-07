@@ -1,6 +1,5 @@
 /* ==========================================================================
    APP.CSS - VELVERA FULL-PAGE EDITORIAL LAYOUT
-   Container 1200px, 2-column sections, clean typography, zero widgets fake
    ========================================================================== */
 
 .velvera-page {
@@ -9,6 +8,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--velvera-bg);
+  position: relative;
 }
 
 /* --------------------------------------------------------------------------
@@ -26,15 +26,16 @@
 .velvera-navbar-inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 18px var(--container-pad);
+  padding: 16px var(--container-pad);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 64px;
 }
 
 .velvera-brand {
   font-family: var(--font-serif);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 500;
   color: var(--velvera-dark);
   letter-spacing: -0.04em;
@@ -50,7 +51,7 @@
 .velvera-nav-btn {
   background-color: var(--velvera-dark);
   color: #ffffff;
-  padding: 9px 18px;
+  padding: 9px 20px;
   border-radius: var(--radius-button);
   font-size: 14px;
   font-weight: 500;
@@ -62,6 +63,38 @@
   opacity: 0.9;
 }
 
+/* Tasti Navigazione dentro il flusso */
+.velvera-nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--velvera-dark);
+  padding: 8px 14px;
+  border-radius: var(--radius-button);
+  background: var(--velvera-bg-card-light);
+  border: 1px solid var(--velvera-border);
+  transition: all var(--transition);
+}
+
+.velvera-nav-back:hover {
+  background: var(--velvera-bg-card-warm);
+}
+
+.velvera-nav-cancel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--velvera-muted);
+  padding: 8px 14px;
+  border-radius: var(--radius-button);
+  transition: color var(--transition);
+}
+
+.velvera-nav-cancel:hover {
+  color: var(--velvera-dark);
+}
+
 /* --------------------------------------------------------------------------
    MAIN CONTAINER
    -------------------------------------------------------------------------- */
@@ -69,7 +102,7 @@
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 48px var(--container-pad) 96px var(--container-pad);
+  padding: 40px var(--container-pad) 130px var(--container-pad);
   flex: 1;
 }
 
@@ -88,7 +121,7 @@
 
 .velvera-hero-title {
   font-family: var(--font-serif);
-  font-size: 54px;
+  font-size: 52px;
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.045em;
@@ -98,7 +131,7 @@
 
 @media (max-width: 768px) {
   .velvera-hero-title {
-    font-size: 38px;
+    font-size: 36px;
   }
 }
 
@@ -129,7 +162,6 @@
   transform: translateY(-1px);
 }
 
-/* 3-Column Policy Cards (Velvera Service Grid Style) */
 .velvera-features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -192,17 +224,23 @@
 .velvera-flow-main {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
 
 .velvera-flow-sidebar {
   position: sticky;
-  top: 96px;
+  top: 88px;
+}
+
+@media (max-width: 960px) {
+  .velvera-flow-sidebar {
+    display: none; /* Su mobile / tablet compatto usiamo il floating recap button */
+  }
 }
 
 /* Header di step */
 .velvera-step-header {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .velvera-step-meta {
@@ -211,16 +249,16 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--velvera-accent);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .velvera-step-heading {
   font-family: var(--font-serif);
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 500;
   letter-spacing: -0.04em;
   color: var(--velvera-dark);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .velvera-step-sub {
@@ -242,7 +280,7 @@
   }
 }
 
-/* Form block in Step 2 e Step 4 */
+/* Form block in Step 3 */
 .velvera-form-card {
   background: #ffffff;
   border: 1px solid var(--velvera-border);
@@ -250,99 +288,13 @@
   padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
 }
 
-/* Hair length selection */
-.velvera-hair-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.velvera-hair-card {
-  padding: 18px 14px;
-  border-radius: var(--radius-card-sm);
-  background-color: var(--velvera-bg-card-light);
-  border: 1px solid var(--velvera-border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.velvera-hair-card:hover {
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.velvera-hair-card.selected {
-  background-color: var(--velvera-accent-light);
-  border-color: var(--velvera-accent);
-  box-shadow: 0 0 0 1px var(--velvera-accent);
-}
-
-.velvera-hair-title {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  font-weight: 500;
-  color: var(--velvera-dark);
-}
-
-.velvera-hair-card.selected .velvera-hair-title {
-  color: var(--velvera-accent);
-}
-
-.velvera-hair-desc {
-  font-size: 12px;
-  color: var(--velvera-muted);
-}
-
-/* Navigation buttons below each step */
-.velvera-step-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 16px;
-  border-top: 1px solid var(--velvera-border);
-}
-
-.velvera-back-action {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--velvera-muted);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 14px;
-  border-radius: var(--radius-button);
-  transition: color var(--transition);
-}
-
-.velvera-back-action:hover {
-  color: var(--velvera-dark);
-}
-
-.velvera-continue-action {
-  background-color: var(--velvera-accent);
-  color: #ffffff;
-  padding: 13px 32px;
-  border-radius: var(--radius-button);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  transition: background var(--transition);
-}
-
-.velvera-continue-action:hover:not(:disabled) {
-  background-color: var(--velvera-accent-hover);
-}
-
-.velvera-continue-action:disabled {
-  background-color: #f2f2f4;
-  color: #a8a8af;
-  cursor: not-allowed;
+@media (max-width: 640px) {
+  .velvera-form-card {
+    padding: 20px;
+  }
 }
 
 /* Sidebar Order Recap Card */
@@ -350,10 +302,10 @@
   background: var(--velvera-bg-card-warm);
   border: 1px solid var(--velvera-border);
   border-radius: var(--radius-card);
-  padding: 28px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .velvera-sidebar-title {
@@ -376,7 +328,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: 14px;
+  font-size: 14.5px;
   gap: 8px;
 }
 
@@ -394,31 +346,199 @@
   line-height: 1.5;
 }
 
-/* Success Layout */
+/* --------------------------------------------------------------------------
+   FLOATING BUTTON PER RIEPILOGO (Responsive & accessibile sempre)
+   -------------------------------------------------------------------------- */
+.velvera-floating-recap-btn {
+  display: none;
+  position: fixed;
+  bottom: 84px;
+  right: 20px;
+  background-color: var(--velvera-dark);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 13.5px;
+  font-weight: 600;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 95;
+  transition: all var(--transition);
+}
+
+.velvera-floating-recap-btn:hover {
+  transform: translateY(-2px);
+  background-color: #000000;
+}
+
+@media (max-width: 960px) {
+  .velvera-floating-recap-btn {
+    display: inline-flex;
+  }
+}
+
+/* MODAL OVERLAY & BOTTOM SHEET */
+.velvera-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fadeIn 160ms ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.velvera-modal-sheet {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-top-left-radius: var(--radius-card-lg);
+  border-top-right-radius: var(--radius-card-lg);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: slideUp 180ms ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.velvera-modal-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--velvera-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.velvera-modal-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--velvera-dark);
+}
+
+.velvera-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--velvera-muted);
+  background: var(--velvera-bg-card-light);
+}
+
+.velvera-modal-footer {
+  padding: 16px 24px 24px 24px;
+  border-top: 1px solid var(--velvera-border);
+}
+
+.velvera-modal-done {
+  width: 100%;
+  background: var(--velvera-dark);
+  color: #ffffff;
+  padding: 14px;
+  border-radius: var(--radius-button);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   BOTTOM BAR FISSA (Sempre presente durante il flow, full width sul box)
+   -------------------------------------------------------------------------- */
+.velvera-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--velvera-border);
+  padding: 16px var(--container-pad);
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 100;
+}
+
+.velvera-bottom-bar-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.velvera-bottom-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--velvera-accent);
+  color: #ffffff;
+  padding: 16px 24px;
+  border-radius: var(--radius-button-lg);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.velvera-bottom-btn:hover:not(:disabled) {
+  background-color: var(--velvera-accent-hover);
+}
+
+.velvera-bottom-btn:disabled {
+  background-color: #f0f0f2;
+  color: #b0b0b8;
+  cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   STEP 5: SUCCESS PANEL RESPONSIVE & ELEGANTE
+   -------------------------------------------------------------------------- */
 .velvera-success-panel {
-  max-width: 640px;
-  margin: 32px auto 0 auto;
+  max-width: 620px;
+  margin: 20px auto 0 auto;
   text-align: center;
   background: var(--velvera-bg-card-warm);
   border: 1px solid var(--velvera-border);
   border-radius: var(--radius-card-lg);
-  padding: 48px 40px;
+  padding: 44px 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .velvera-success-panel {
+    padding: 32px 20px;
+  }
 }
 
 .velvera-success-title {
   font-family: var(--font-serif);
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 500;
   letter-spacing: -0.04em;
   color: var(--velvera-dark);
 }
 
 .velvera-success-desc {
-  font-size: 16px;
+  font-size: 15.5px;
   color: var(--velvera-muted);
   line-height: 1.6;
 }
@@ -428,19 +548,47 @@
   background: #ffffff;
   border: 1px solid var(--velvera-border);
   border-radius: var(--radius-card);
-  padding: 24px;
+  padding: 22px 24px;
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin: 12px 0;
+  gap: 12px;
+  margin: 12px 0 16px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.velvera-success-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14.5px;
+  gap: 12px;
+}
+
+.velvera-success-row.total {
+  padding-top: 12px;
+  border-top: 1px solid var(--velvera-border);
+  font-weight: 600;
+  font-size: 15.5px;
+  color: var(--velvera-dark);
+}
+
+.velvera-success-key {
+  color: var(--velvera-muted);
+  flex-shrink: 0;
+}
+
+.velvera-success-val {
+  font-weight: 600;
+  color: var(--velvera-dark);
+  text-align: right;
+  word-break: break-word;
 }
 
 .velvera-success-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   background-color: var(--velvera-accent);
   color: #ffffff;
   padding: 16px 36px;
@@ -454,4 +602,17 @@
 
 .velvera-success-cta:hover {
   background-color: var(--velvera-accent-hover);
+}
+
+.velvera-reset-action {
+  font-size: 14px;
+  color: var(--velvera-muted);
+  padding: 8px;
+  font-weight: 500;
+  margin-top: 4px;
+  transition: color var(--transition);
+}
+
+.velvera-reset-action:hover {
+  color: var(--velvera-dark);
 }

@@ -1,28 +1,26 @@
 /* ==========================================================================
    CALENDAR PICKER CARD - VELVERA EDITORIAL STYLING
-   Radius 24px, subtle neutral grids, selected date in Velvera Accent
    ========================================================================== */
 
 .clean-cal-card {
-  background: var(--velvera-bg-page);
-  border: 1px solid var(--velvera-border-subtle);
-  border-radius: var(--radius-card-large);
-  padding: 24px;
-  box-shadow: var(--shadow-subtle);
+  background: var(--velvera-bg);
+  border: 1px solid var(--velvera-border);
+  border-radius: var(--radius-card);
+  padding: 28px;
 }
 
 .clean-cal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .clean-cal-month {
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
-  color: var(--velvera-dark-primary);
+  color: var(--velvera-dark);
   text-transform: capitalize;
   letter-spacing: -0.03em;
 }
@@ -33,16 +31,16 @@
 }
 
 .clean-cal-nav-btn {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-pill);
   background: var(--velvera-bg-card-light);
-  border: 1px solid var(--velvera-border-subtle);
+  border: 1px solid var(--velvera-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--velvera-dark-primary);
-  transition: all var(--transition-fast);
+  color: var(--velvera-dark);
+  transition: all var(--transition);
 }
 
 .clean-cal-nav-btn:hover:not(:disabled) {
@@ -58,15 +56,15 @@
 .clean-cal-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  gap: 8px;
   text-align: center;
 }
 
 .clean-cal-day-name {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
-  color: var(--velvera-text-muted);
+  color: var(--velvera-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding-bottom: 12px;
@@ -77,14 +75,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-button);
+  border-radius: var(--radius-input);
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
-  color: var(--velvera-dark-primary);
+  color: var(--velvera-dark);
   background: transparent;
   border: 1px solid transparent;
-  transition: all var(--transition-fast);
+  transition: all var(--transition);
   cursor: pointer;
 }
 
@@ -93,108 +91,107 @@
 }
 
 .clean-cal-day-cell.disabled {
-  color: #c4c4c8;
+  color: #a8a8af;
+  background-color: #f3f3f5;
+  border-color: #ebebee;
   cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.clean-cal-day-cell.available {
+  background-color: #ffffff;
+  border-color: #e5e5ea;
 }
 
 .clean-cal-day-cell.available:hover:not(.selected) {
   background-color: var(--velvera-bg-card-warm);
-  border-color: var(--velvera-border-subtle);
+  border-color: #c7c7cc;
 }
 
 .clean-cal-day-cell.selected {
   background-color: var(--velvera-accent);
+  border-color: var(--velvera-accent);
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(255, 106, 0, 0.28);
 }
 
-/* Time Slots Section */
-.clean-slots-section {
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid var(--velvera-border-subtle);
+/* ==========================================================================
+   TIME SLOTS SECTION - STILE PULITO, BEN DEFINITO, EDITORIALE
+   ========================================================================== */
+.clean-slots-box {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--velvera-border);
 }
 
 .clean-slots-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .clean-slots-title {
   font-family: var(--font-sans);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
-  color: var(--velvera-dark-primary);
-  letter-spacing: -0.015em;
+  color: var(--velvera-dark);
+  letter-spacing: -0.01em;
 }
 
-.clean-slots-hint {
-  font-size: 12px;
-  color: var(--velvera-text-muted);
+.clean-slots-date-badge {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--velvera-muted);
+  background: var(--velvera-bg-card-light);
+  border: 1px solid var(--velvera-border);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
 }
 
-.clean-slots-grid {
+.clean-slots-grid-flexible {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
   gap: 10px;
 }
 
-@media (max-width: 480px) {
-  .clean-slots-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.clean-slot-btn {
-  padding: 12px 14px;
-  border-radius: var(--radius-button);
-  background-color: var(--velvera-bg-page);
-  border: 1px solid var(--velvera-border-subtle);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  transition: all var(--transition-fast);
-}
-
-.clean-slot-btn:hover:not(:disabled):not(.selected) {
-  background-color: var(--velvera-bg-soft);
-  border-color: rgba(0, 0, 0, 0.18);
-  transform: translateY(-1px);
-}
-
-.clean-slot-btn.selected {
-  background-color: var(--velvera-accent);
-  border-color: var(--velvera-accent);
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(255, 106, 0, 0.25);
-}
-
-.clean-slot-time {
+.clean-time-chip {
+  padding: 13px 12px;
+  border-radius: var(--radius-input);
+  background-color: var(--velvera-bg-card-light);
+  border: 1px solid var(--velvera-border);
+  color: var(--velvera-dark);
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
 }
 
-.clean-slot-btn.selected .clean-slot-time {
+.clean-time-chip:hover:not(:disabled):not(.selected) {
+  background-color: var(--velvera-bg-card-warm);
+  border-color: rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+.clean-time-chip.selected {
+  background-color: var(--velvera-accent);
+  border-color: var(--velvera-accent);
   color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 106, 0, 0.25);
 }
 
-.clean-slot-tag {
-  font-size: 11px;
-  color: var(--velvera-text-muted);
-}
-
-.clean-slot-btn.selected .clean-slot-tag {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.clean-slot-btn:disabled {
+.clean-time-chip:disabled {
   opacity: 0.35;
-  cursor: not-allowed;
   background-color: #f7f7f8;
+  cursor: not-allowed;
+  border-color: #ededef;
 }
