@@ -13,7 +13,7 @@ export default function SummaryBentoCard({
   return (
     <div className="clean-summary-card">
       <div className="clean-summary-header">
-        <span className="clean-summary-title">Riepilogo richiesta</span>
+        <span className="clean-summary-title">Riepilogo</span>
       </div>
 
       <div className="clean-summary-list">

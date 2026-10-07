@@ -184,9 +184,9 @@ export default function App() {
 
       {/* BODY PRINCIPALE */}
       <main className="velvera-main">
-        {/* STEP 0: HERO & SEZIONI INIZIALI */}
+        {/* STEP 0: HERO CENTRATO ESSENZIALE */}
         {step === 0 && (
-          <div>
+          <div className="velvera-hero-wrapper velvera-step-view-enter">
             <section className="velvera-hero">
               <h1 className="velvera-hero-title">
                 <AnimatedWords text="L'arte dell'hair styling, dedicata a te." />
@@ -195,36 +195,6 @@ export default function App() {
                 Prenota la tua sessione personalizzata per taglio, colore e schiariture.
                 Trattamenti individuali con la massima cura e senza attese in salone.
               </p>
-              <button
-                type="button"
-                className="velvera-hero-cta"
-                onClick={() => setStep(1)}
-              >
-                Inizia prenotazione
-              </button>
-            </section>
-
-            <section className="velvera-features-grid">
-              <div className="velvera-feature-card">
-                <h3 className="velvera-feature-title">Orari flessibili e serali</h3>
-                <p className="velvera-feature-text">
-                  Sessioni feriali dalle 19:00 alle 21:00 per chi lavora; disponibilità continuata nel weekend (sabato e domenica).
-                </p>
-              </div>
-
-              <div className="velvera-feature-card">
-                <h3 className="velvera-feature-title">Pianificazione anticipata</h3>
-                <p className="velvera-feature-text">
-                  Disponibilità a partire da 7 giorni per garantire prodotti dedicati e tempo necessario per ogni passaggio.
-                </p>
-              </div>
-
-              <div className="velvera-feature-card">
-                <h3 className="velvera-feature-title">Conferma diretta WhatsApp</h3>
-                <p className="velvera-feature-text">
-                  Riceverai la verifica immediata e la conferma del tuo orario direttamente sul tuo numero di telefono.
-                </p>
-              </div>
             </section>
           </div>
         )}
@@ -406,57 +376,100 @@ export default function App() {
           </div>
         )}
 
-        {/* STEP 5: SCHERMATA FINALE RESPONSIVE */}
+        {/* STEP 5: SCHERMATA FINALE CON STESSO STILE EDITORIALE */}
         {step === 5 && (
-          <div className="velvera-success-panel velvera-step-view-enter">
-            <h2 className="velvera-success-title">
-              <AnimatedWords text="Richiesta registrata!" />
-            </h2>
-            <p className="velvera-success-desc">
-              Grazie <strong>{contactData.name}</strong>. I dettagli della tua richiesta sono pronti per essere confermati.
-            </p>
+          <div className="velvera-flow-layout">
+            <div className="velvera-flow-main velvera-step-view-enter">
+              <div className="velvera-step-header">
+                <div className="velvera-step-meta">Riepilogo finale</div>
+                <h2 className="velvera-step-heading">
+                  <AnimatedWords text="Richiesta registrata" />
+                </h2>
+                <p className="velvera-step-sub">
+                  Grazie <strong>{contactData.name}</strong>. Clicca su Conferma in basso per inviare il riepilogo a Martina.
+                </p>
+              </div>
 
-            <div className="velvera-success-recap">
-              <div className="velvera-success-row">
-                <span className="velvera-success-key">Trattamenti</span>
-                <span className="velvera-success-val">{selectedServices.map((s) => s.title).join(', ')}</span>
-              </div>
-              <div className="velvera-success-row">
-                <span className="velvera-success-key">Data e orario</span>
-                <span className="velvera-success-val">{selectedDate} · ore {selectedSlot}</span>
-              </div>
-              <div className="velvera-success-row">
-                <span className="velvera-success-key">Contatto</span>
-                <span className="velvera-success-val">{contactData.name} ({contactData.phone})</span>
-              </div>
-              {specialNotes && (
-                <div className="velvera-success-row">
-                  <span className="velvera-success-key">Note</span>
-                  <span className="velvera-success-val">{specialNotes}</span>
+              <div className="clean-summary-card">
+                <div className="clean-summary-header">
+                  <span className="clean-summary-title">Dettagli appuntamento</span>
                 </div>
-              )}
-              <div className="velvera-success-row total">
-                <span className="velvera-success-key">Totale stimato</span>
-                <span className="velvera-success-val">{totalEstimatedPrice}€</span>
+
+                <div className="clean-summary-list">
+                  <div className="clean-summary-row">
+                    <span className="clean-summary-key">Trattamenti</span>
+                    <div className="clean-summary-services">
+                      {selectedServices.map((s) => (
+                        <span key={s.id} className="clean-summary-service-item">
+                          {s.title} ({s.price})
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="clean-summary-row">
+                    <span className="clean-summary-key">Data e orario</span>
+                    <span className="clean-summary-val">{selectedDate} · ore {selectedSlot}</span>
+                  </div>
+
+                  <div className="clean-summary-row">
+                    <span className="clean-summary-key">Contatto</span>
+                    <span className="clean-summary-val">{contactData.name} ({contactData.phone})</span>
+                  </div>
+
+                  {specialNotes && (
+                    <div className="clean-summary-row">
+                      <span className="clean-summary-key">Note</span>
+                      <span className="clean-summary-val">{specialNotes}</span>
+                    </div>
+                  )}
+
+                  <div className="clean-summary-row">
+                    <span className="clean-summary-key">Totale stimato</span>
+                    <span className="clean-summary-val" style={{ color: 'var(--velvera-accent)', fontSize: 16 }}>
+                      {totalEstimatedPrice}€
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ textAlign: 'center', marginTop: 8 }}>
+                <button
+                  type="button"
+                  className="velvera-reset-action"
+                  onClick={handleReset}
+                >
+                  Effettua un'altra richiesta
+                </button>
               </div>
             </div>
 
-            <a
-              href={getWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="velvera-success-cta"
-            >
-              Conferma
-            </a>
-
-            <button
-              type="button"
-              className="velvera-reset-action"
-              onClick={handleReset}
-            >
-              Effettua un'altra richiesta
-            </button>
+            {/* SIDEBAR RIEPILOGO STILE EDITORIALE */}
+            <aside className="velvera-flow-sidebar">
+              <div className="velvera-sidebar-card">
+                <h4 className="velvera-sidebar-title">Riepilogo</h4>
+                <div className="velvera-sidebar-items">
+                  {selectedServices.map((s) => (
+                    <div key={s.id} className="velvera-sidebar-row">
+                      <span>{s.title}</span>
+                      <strong>{s.price}</strong>
+                    </div>
+                  ))}
+                  <div className="velvera-sidebar-row" style={{ paddingTop: 10, borderTop: '1px dashed var(--velvera-border)' }}>
+                    <span>Data</span>
+                    <strong>{selectedDate}</strong>
+                  </div>
+                  <div className="velvera-sidebar-row">
+                    <span>Orario</span>
+                    <strong>ore {selectedSlot}</strong>
+                  </div>
+                  <div className="velvera-sidebar-row total">
+                    <span>Totale stimato</span>
+                    <span>{totalEstimatedPrice}€</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
           </div>
         )}
       </main>
@@ -538,10 +551,20 @@ export default function App() {
         </div>
       )}
 
-      {/* PULSANTE CONTINUA / CONFERMA FISSO IN BASSO */}
-      {step >= 1 && step <= 4 && (
-        <div className="velvera-bottom-bar">
-          <div className="velvera-bottom-bar-inner">
+      {/* PULSANTE IN BASSO FISSO PER TUTTE LE SCHERMATE (STEP 0, 1-4, 5) */}
+      <div className="velvera-bottom-bar">
+        <div className="velvera-bottom-bar-inner">
+          {step === 0 && (
+            <button
+              type="button"
+              className="velvera-bottom-btn"
+              onClick={() => setStep(1)}
+            >
+              Inizia prenotazione
+            </button>
+          )}
+
+          {step >= 1 && step <= 4 && (
             <button
               type="button"
               className="velvera-bottom-btn"
@@ -550,9 +573,21 @@ export default function App() {
             >
               {step === 4 ? 'Conferma' : 'Continua'}
             </button>
-          </div>
+          )}
+
+          {step === 5 && (
+            <a
+              href={getWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="velvera-bottom-btn"
+              style={{ textDecoration: 'none' }}
+            >
+              Conferma
+            </a>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -99,7 +99,7 @@
   opacity: 0.75;
 }
 
-.clean-cal-day-cell.available:not(:disabled) {
+.clean-cal-day-cell.available:not(:disabled):not(.selected) {
   background-color: #ffffff;
   border-color: #e5e5ea;
   color: var(--velvera-dark);
@@ -110,11 +110,13 @@
   border-color: #c7c7cc;
 }
 
-.clean-cal-day-cell.selected {
-  background-color: var(--velvera-accent);
-  border-color: var(--velvera-accent);
-  color: #ffffff;
-  font-weight: 700;
+.clean-cal-day-cell.selected,
+.clean-cal-day-cell.available.selected {
+  background-color: var(--velvera-accent) !important;
+  border-color: var(--velvera-accent) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(255, 106, 0, 0.3) !important;
 }
 
 /* ==========================================================================
