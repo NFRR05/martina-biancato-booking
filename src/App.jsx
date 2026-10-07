@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Receipt, X } from 'lucide-react';
+import { ArrowLeft, Home, Receipt, X } from 'lucide-react';
 
 import SelectionPillCard from './components/SelectionPillCard';
 import CalendarPickerCard from './components/CalendarPickerCard';
@@ -158,6 +158,21 @@ export default function App() {
                 </button>
               </div>
             </>
+          ) : step === 5 ? (
+            <>
+              <span className="velvera-brand">Martina Biancato</span>
+              <div className="velvera-nav-actions">
+                <button
+                  type="button"
+                  className="velvera-nav-home-btn"
+                  onClick={handleReset}
+                  aria-label="Torna alla Home"
+                >
+                  <Home size={16} />
+                  <span>Home</span>
+                </button>
+              </div>
+            </>
           ) : (
             <>
               <button
@@ -170,13 +185,18 @@ export default function App() {
                 <span>Indietro</span>
               </button>
 
-              <button
-                type="button"
-                className="velvera-nav-cancel"
-                onClick={handleReset}
-              >
-                Annulla
-              </button>
+              {/* Nel passo 4 su 4 (riepilogo) Annulla viene rimosso */}
+              {step < 4 ? (
+                <button
+                  type="button"
+                  className="velvera-nav-cancel"
+                  onClick={handleReset}
+                >
+                  Annulla
+                </button>
+              ) : (
+                <div />
+              )}
             </>
           )}
         </div>
