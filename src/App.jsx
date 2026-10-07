@@ -192,8 +192,11 @@ export default function App() {
                 <AnimatedWords text="L'arte dell'hair styling, dedicata a te." />
               </h1>
               <p className="velvera-hero-desc">
-                Prenota la tua sessione personalizzata per taglio, colore e schiariture.
-                Trattamenti individuali con la massima cura e senza attese in salone.
+                <AnimatedWords
+                  text="Prenota la tua sessione personalizzata per taglio, colore e schiariture. Trattamenti individuali con la massima cura e senza attese in salone."
+                  baseDelay={0.25}
+                  wordDelay={0.035}
+                />
               </p>
             </section>
           </div>
@@ -207,12 +210,18 @@ export default function App() {
               {step === 1 && (
                 <div>
                   <div className="velvera-step-header">
-                    <div className="velvera-step-meta">Passo 1 di 4</div>
+                    <div className="velvera-step-meta">
+                      <AnimatedWords text="Passo 1 di 4" baseDelay={0.05} wordDelay={0.04} />
+                    </div>
                     <h2 className="velvera-step-heading">
                       <AnimatedWords text="Seleziona i servizi" />
                     </h2>
                     <p className="velvera-step-sub">
-                      Scegli uno o più trattamenti per il tuo appuntamento.
+                      <AnimatedWords
+                        text="Scegli uno o più trattamenti per il tuo appuntamento."
+                        baseDelay={0.15}
+                        wordDelay={0.035}
+                      />
                     </p>
                   </div>
 
@@ -237,12 +246,18 @@ export default function App() {
               {step === 2 && (
                 <div>
                   <div className="velvera-step-header">
-                    <div className="velvera-step-meta">Passo 2 di 4</div>
+                    <div className="velvera-step-meta">
+                      <AnimatedWords text="Passo 2 di 4" baseDelay={0.05} wordDelay={0.04} />
+                    </div>
                     <h2 className="velvera-step-heading">
                       <AnimatedWords text="Scegli data e orario" />
                     </h2>
                     <p className="velvera-step-sub">
-                      Seleziona un giorno disponibile a partire da 7 giorni da oggi e scegli l'orario desiderato.
+                      <AnimatedWords
+                        text="Seleziona un giorno disponibile a partire da 7 giorni da oggi e scegli l'orario desiderato."
+                        baseDelay={0.15}
+                        wordDelay={0.035}
+                      />
                     </p>
                   </div>
 
@@ -263,12 +278,18 @@ export default function App() {
               {step === 3 && (
                 <div>
                   <div className="velvera-step-header">
-                    <div className="velvera-step-meta">Passo 3 di 4</div>
+                    <div className="velvera-step-meta">
+                      <AnimatedWords text="Passo 3 di 4" baseDelay={0.05} wordDelay={0.04} />
+                    </div>
                     <h2 className="velvera-step-heading">
                       <AnimatedWords text="I tuoi recapiti" />
                     </h2>
                     <p className="velvera-step-sub">
-                      I dati necessari per verificare e confermare la tua prenotazione.
+                      <AnimatedWords
+                        text="I dati necessari per verificare e confermare la tua prenotazione."
+                        baseDelay={0.15}
+                        wordDelay={0.035}
+                      />
                     </p>
                   </div>
 
@@ -311,12 +332,18 @@ export default function App() {
               {step === 4 && (
                 <div>
                   <div className="velvera-step-header">
-                    <div className="velvera-step-meta">Passo 4 di 4</div>
+                    <div className="velvera-step-meta">
+                      <AnimatedWords text="Passo 4 di 4" baseDelay={0.05} wordDelay={0.04} />
+                    </div>
                     <h2 className="velvera-step-heading">
                       <AnimatedWords text="Rivedi la richiesta" />
                     </h2>
                     <p className="velvera-step-sub">
-                      Controlla tutti i dettagli prima di inviare la richiesta a Martina.
+                      <AnimatedWords
+                        text="Controlla tutti i dettagli prima di inviare la richiesta a Martina."
+                        baseDelay={0.15}
+                        wordDelay={0.035}
+                      />
                     </p>
                   </div>
 
@@ -381,12 +408,18 @@ export default function App() {
           <div className="velvera-flow-layout">
             <div className="velvera-flow-main velvera-step-view-enter">
               <div className="velvera-step-header">
-                <div className="velvera-step-meta">Riepilogo finale</div>
+                <div className="velvera-step-meta">
+                  <AnimatedWords text="Riepilogo finale" baseDelay={0.05} wordDelay={0.04} />
+                </div>
                 <h2 className="velvera-step-heading">
                   <AnimatedWords text="Richiesta registrata" />
                 </h2>
                 <p className="velvera-step-sub">
-                  Grazie <strong>{contactData.name}</strong>. Clicca su Conferma in basso per inviare il riepilogo a Martina.
+                  <AnimatedWords
+                    text={`Grazie ${contactData.name || 'per aver prenotato'}. Clicca su Conferma in basso per inviare il riepilogo a Martina.`}
+                    baseDelay={0.15}
+                    wordDelay={0.035}
+                  />
                 </p>
               </div>
 
