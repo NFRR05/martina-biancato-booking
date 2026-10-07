@@ -5,6 +5,7 @@ import SelectionPillCard from './components/SelectionPillCard';
 import CalendarPickerCard from './components/CalendarPickerCard';
 import CleanInputField from './components/CleanInputField';
 import SummaryBentoCard from './components/SummaryBentoCard';
+import AnimatedWords from './components/AnimatedWords';
 import './App.css';
 
 const SERVICES_CATALOG = [
@@ -188,7 +189,7 @@ export default function App() {
           <div>
             <section className="velvera-hero">
               <h1 className="velvera-hero-title">
-                L'arte dell'hair styling, dedicata a te.
+                <AnimatedWords text="L'arte dell'hair styling, dedicata a te." />
               </h1>
               <p className="velvera-hero-desc">
                 Prenota la tua sessione personalizzata per taglio, colore e schiariture.
@@ -231,13 +232,15 @@ export default function App() {
         {/* STEP 1 A 4: WORKSPACE + FLOATING/DESKTOP RIEPILOGO */}
         {step >= 1 && step <= 4 && (
           <div className="velvera-flow-layout">
-            <div className="velvera-flow-main">
+            <div className="velvera-flow-main velvera-step-view-enter" key={`step-${step}`}>
               {/* PASSO 1 DI 4: TRATTAMENTI */}
               {step === 1 && (
                 <div>
                   <div className="velvera-step-header">
                     <div className="velvera-step-meta">Passo 1 di 4</div>
-                    <h2 className="velvera-step-heading">Seleziona i servizi</h2>
+                    <h2 className="velvera-step-heading">
+                      <AnimatedWords text="Seleziona i servizi" />
+                    </h2>
                     <p className="velvera-step-sub">
                       Scegli uno o più trattamenti per il tuo appuntamento.
                     </p>
@@ -265,7 +268,9 @@ export default function App() {
                 <div>
                   <div className="velvera-step-header">
                     <div className="velvera-step-meta">Passo 2 di 4</div>
-                    <h2 className="velvera-step-heading">Scegli data e orario</h2>
+                    <h2 className="velvera-step-heading">
+                      <AnimatedWords text="Scegli data e orario" />
+                    </h2>
                     <p className="velvera-step-sub">
                       Seleziona un giorno disponibile a partire da 7 giorni da oggi e scegli l'orario desiderato.
                     </p>
@@ -289,7 +294,9 @@ export default function App() {
                 <div>
                   <div className="velvera-step-header">
                     <div className="velvera-step-meta">Passo 3 di 4</div>
-                    <h2 className="velvera-step-heading">I tuoi recapiti</h2>
+                    <h2 className="velvera-step-heading">
+                      <AnimatedWords text="I tuoi recapiti" />
+                    </h2>
                     <p className="velvera-step-sub">
                       I dati necessari per verificare e confermare la tua prenotazione.
                     </p>
@@ -335,7 +342,9 @@ export default function App() {
                 <div>
                   <div className="velvera-step-header">
                     <div className="velvera-step-meta">Passo 4 di 4</div>
-                    <h2 className="velvera-step-heading">Rivedi la richiesta</h2>
+                    <h2 className="velvera-step-heading">
+                      <AnimatedWords text="Rivedi la richiesta" />
+                    </h2>
                     <p className="velvera-step-sub">
                       Controlla tutti i dettagli prima di inviare la richiesta a Martina.
                     </p>
@@ -399,8 +408,10 @@ export default function App() {
 
         {/* STEP 5: SCHERMATA FINALE RESPONSIVE */}
         {step === 5 && (
-          <div className="velvera-success-panel">
-            <h2 className="velvera-success-title">Richiesta registrata!</h2>
+          <div className="velvera-success-panel velvera-step-view-enter">
+            <h2 className="velvera-success-title">
+              <AnimatedWords text="Richiesta registrata!" />
+            </h2>
             <p className="velvera-success-desc">
               Grazie <strong>{contactData.name}</strong>. I dettagli della tua richiesta sono pronti per essere confermati.
             </p>
