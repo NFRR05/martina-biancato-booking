@@ -1,48 +1,57 @@
+/* ==========================================================================
+   CALENDAR PICKER CARD - VELVERA EDITORIAL STYLING
+   Radius 24px, subtle neutral grids, selected date in Velvera Accent
+   ========================================================================== */
+
 .clean-cal-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  padding: 22px;
+  background: var(--velvera-bg-page);
+  border: 1px solid var(--velvera-border-subtle);
+  border-radius: var(--radius-card-large);
+  padding: 24px;
+  box-shadow: var(--shadow-subtle);
 }
 
 .clean-cal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .clean-cal-month {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-main);
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--velvera-dark-primary);
   text-transform: capitalize;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .clean-cal-nav {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .clean-cal-nav-btn {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-pill);
-  background: var(--bg-subtle);
+  background: var(--velvera-bg-card-light);
+  border: 1px solid var(--velvera-border-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-main);
-  transition: all var(--transition-smooth);
+  color: var(--velvera-dark-primary);
+  transition: all var(--transition-fast);
 }
 
 .clean-cal-nav-btn:hover:not(:disabled) {
-  background: var(--bg-hover);
+  background: var(--velvera-bg-card-warm);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .clean-cal-nav-btn:disabled {
-  opacity: 0.3;
+  opacity: 0.25;
   cursor: not-allowed;
 }
 
@@ -54,10 +63,13 @@
 }
 
 .clean-cal-day-name {
-  font-size: 12px;
+  font-family: var(--font-sans);
+  font-size: 11px;
   font-weight: 600;
-  color: var(--text-light);
-  padding-bottom: 10px;
+  color: var(--velvera-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 12px;
 }
 
 .clean-cal-day-cell {
@@ -65,38 +77,43 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--radius-button);
+  font-family: var(--font-sans);
   font-size: 14px;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  color: var(--text-main);
-  transition: all var(--transition-smooth);
+  font-weight: 500;
+  color: var(--velvera-dark-primary);
   background: transparent;
-}
-
-.clean-cal-day-cell:hover:not(:disabled) {
-  background-color: var(--bg-subtle);
-}
-
-.clean-cal-day-cell.selected {
-  background-color: var(--text-main) !important;
-  color: var(--text-white) !important;
-}
-
-.clean-cal-day-cell:disabled {
-  color: var(--border-card);
-  opacity: 0.45;
-  cursor: not-allowed;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  cursor: pointer;
 }
 
 .clean-cal-day-cell.empty {
-  visibility: hidden;
+  cursor: default;
 }
 
-/* Slots Section */
-.clean-slots-box {
+.clean-cal-day-cell.disabled {
+  color: #c4c4c8;
+  cursor: not-allowed;
+}
+
+.clean-cal-day-cell.available:hover:not(.selected) {
+  background-color: var(--velvera-bg-card-warm);
+  border-color: var(--velvera-border-subtle);
+}
+
+.clean-cal-day-cell.selected {
+  background-color: var(--velvera-accent);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(255, 106, 0, 0.28);
+}
+
+/* Time Slots Section */
+.clean-slots-section {
   margin-top: 24px;
   padding-top: 20px;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--velvera-border-subtle);
 }
 
 .clean-slots-header {
@@ -107,53 +124,77 @@
 }
 
 .clean-slots-title {
-  font-size: 13px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: var(--velvera-dark-primary);
+  letter-spacing: -0.015em;
 }
 
-.clean-slots-date-badge {
+.clean-slots-hint {
   font-size: 12px;
-  font-weight: 600;
-  color: var(--text-main);
+  color: var(--velvera-text-muted);
 }
 
-/* Flexible Time Slots Grid */
-.clean-slots-grid-flexible {
+.clean-slots-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-top: 10px;
 }
 
-.clean-time-chip {
-  padding: 12px 6px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-card);
+@media (max-width: 480px) {
+  .clean-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.clean-slot-btn {
+  padding: 12px 14px;
+  border-radius: var(--radius-button);
+  background-color: var(--velvera-bg-page);
+  border: 1px solid var(--velvera-border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: all var(--transition-fast);
+}
+
+.clean-slot-btn:hover:not(:disabled):not(.selected) {
+  background-color: var(--velvera-bg-soft);
+  border-color: rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+.clean-slot-btn.selected {
+  background-color: var(--velvera-accent);
+  border-color: var(--velvera-accent);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(255, 106, 0, 0.25);
+}
+
+.clean-slot-time {
+  font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-main);
-  text-align: center;
-  transition: all var(--transition-smooth);
+  letter-spacing: -0.015em;
 }
 
-.clean-time-chip:hover:not(:disabled) {
-  border-color: var(--border-hover);
-  background: var(--bg-subtle);
+.clean-slot-btn.selected .clean-slot-time {
+  color: #ffffff;
 }
 
-.clean-time-chip.selected,
-.clean-time-chip.selected:hover {
-  border-color: var(--accent-blue) !important;
-  background-color: var(--accent-blue) !important;
-  color: #ffffff !important;
-  box-shadow: 0 2px 10px rgba(1, 120, 255, 0.25);
+.clean-slot-tag {
+  font-size: 11px;
+  color: var(--velvera-text-muted);
 }
 
-.clean-time-chip:disabled {
+.clean-slot-btn.selected .clean-slot-tag {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.clean-slot-btn:disabled {
   opacity: 0.35;
   cursor: not-allowed;
-  background: var(--bg-subtle);
-  text-decoration: line-through;
+  background-color: #f7f7f8;
 }

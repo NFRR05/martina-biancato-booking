@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
+import { ArrowLeft, MessageCircle } from 'lucide-react';
 
-import SegmentedProgressBar from './components/SegmentedProgressBar';
 import SelectionPillCard from './components/SelectionPillCard';
 import CalendarPickerCard from './components/CalendarPickerCard';
 import CleanInputField from './components/CleanInputField';
-import StickyBottomActionBar from './components/StickyBottomActionBar';
 import SummaryBentoCard from './components/SummaryBentoCard';
 import './App.css';
 
-// Clean, realistic services list
 const SERVICES_CATALOG = [
   {
     id: 'taglio-piega',
@@ -33,7 +31,7 @@ const SERVICES_CATALOG = [
   },
   {
     id: 'piega-botox',
-    title: 'Piega & Trattamento Rimpolpante',
+    title: 'Piega & Trattamento Botox',
     description: 'Trattamento nutriente profondo con acido ialuronico e piega a lunga tenuta.',
     duration: '1h 00m',
     price: '28€'
@@ -47,10 +45,8 @@ const HAIR_LENGTH_OPTIONS = [
 ];
 
 export default function App() {
-  // Navigation State: 0 to 6
   const [step, setStep] = useState(0);
 
-  // Form Data State
   const [selectedServiceIds, setSelectedServiceIds] = useState([]);
   const [hairLength, setHairLength] = useState('medi');
   const [specialNotes, setSpecialNotes] = useState('');
@@ -124,298 +120,401 @@ export default function App() {
     const servicesText = selectedServices.map((s) => s.title).join(', ');
     const slotText = selectedSlot ? `alle ore ${selectedSlot}` : '';
     const text = encodeURIComponent(
-      `Ciao Martina! Sono ${contactData.name}, ho inviato la richiesta dal tuo sito per il giorno ${selectedDate} ${slotText}. Servizi: ${servicesText}. Aspetto tua conferma!`
+      `Ciao Martina! Sono ${contactData.name}, ho inviato la richiesta dal tuo sito per il giorno ${selectedDate} ${slotText}. Trattamenti: ${servicesText}. Aspetto tua conferma!`
     );
     return `https://wa.me/393400000000?text=${text}`;
   };
 
   return (
-    <div className="app-wrapper">
-      <div className="bg-ribbon-decor" aria-hidden="true">
-        <img src="/ribbon-transparent.png" alt="" className="bg-ribbon-img" />
-      </div>
+    <div className="velvera-page">
+      {/* VELVERA HEADER NATIVO */}
+      <nav className="velvera-navbar">
+        <div className="velvera-navbar-inner">
+          <a href="#" onClick={(e) => { e.preventDefault(); setStep(0); }} className="velvera-brand">
+            Martina Biancato
+          </a>
+          <div className="velvera-nav-actions">
+            {step === 0 ? (
+              <button
+                type="button"
+                className="velvera-nav-btn"
+                onClick={() => setStep(1)}
+              >
+                Prenota ora
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="velvera-back-action"
+                onClick={handleReset}
+              >
+                Annulla e torna alla home
+              </button>
+            )}
+          </div>
+        </div>
+      </nav>
 
-      {/* STEP 0: CLEAN & SOFT HERO */}
-      {step === 0 && (
-        <div>
-          <section className="clean-hero">
-            <h1 className="clean-hero-title">
-              L'hair styling su misura.
-            </h1>
+      {/* BODY PRINCIPALE */}
+      <main className="velvera-main">
+        {/* STEP 0: HERO & FEATURES EDITORIALI */}
+        {step === 0 && (
+          <div>
+            <section className="velvera-hero">
+              <h1 className="velvera-hero-title">
+                L'arte dell'hair styling, dedicata a te.
+              </h1>
+              <p className="velvera-hero-desc">
+                Prenota la tua sessione personalizzata per taglio, colore e schiariture.
+                Trattamenti individuali con la massima cura e senza attese in salone.
+              </p>
+              <button
+                type="button"
+                className="velvera-hero-cta"
+                onClick={() => setStep(1)}
+              >
+                Inizia prenotazione
+              </button>
+            </section>
 
-            <p className="clean-hero-desc">
-              Pianifica il tuo appuntamento per taglio, colore o schiariture con Martina.
-              Sessioni riservate e curate nel dettaglio, senza fretta né attese.
+            <section className="velvera-features-grid">
+              <div className="velvera-feature-card">
+                <h3 className="velvera-feature-title">Orari flessibili e serali</h3>
+                <p className="velvera-feature-text">
+                  Sessioni feriali dalle 19:00 alle 21:00 per chi lavora; disponibilità continuata nel weekend (sabato e domenica).
+                </p>
+              </div>
+
+              <div className="velvera-feature-card">
+                <h3 className="velvera-feature-title">Pianificazione anticipata</h3>
+                <p className="velvera-feature-text">
+                  Disponibilità a partire da 7 giorni per garantire prodotti dedicati e tempo necessario per ogni passaggio.
+                </p>
+              </div>
+
+              <div className="velvera-feature-card">
+                <h3 className="velvera-feature-title">Conferma diretta WhatsApp</h3>
+                <p className="velvera-feature-text">
+                  Riceverai la verifica immediata e la conferma del tuo orario direttamente sul tuo numero di telefono.
+                </p>
+              </div>
+            </section>
+          </div>
+        )}
+
+        {/* STEP 1 A 5: LAYOUT A 2 COLONNE AUTENTICO */}
+        {step >= 1 && step <= 5 && (
+          <div className="velvera-flow-layout">
+            <div className="velvera-flow-main">
+              {/* STEP 1: SERVIZI */}
+              {step === 1 && (
+                <div>
+                  <div className="velvera-step-header">
+                    <div className="velvera-step-meta">Passo 1 di 5 · Catalogo Trattamenti</div>
+                    <h2 className="velvera-step-heading">Seleziona i servizi</h2>
+                    <p className="velvera-step-sub">
+                      Scegli uno o più trattamenti per il tuo appuntamento.
+                    </p>
+                  </div>
+
+                  <div className="velvera-services-grid">
+                    {SERVICES_CATALOG.map((service) => (
+                      <SelectionPillCard
+                        key={service.id}
+                        id={service.id}
+                        title={service.title}
+                        description={service.description}
+                        duration={service.duration}
+                        price={service.price}
+                        selected={selectedServiceIds.includes(service.id)}
+                        onToggle={toggleService}
+                      />
+                    ))}
+                  </div>
+
+                  <div className="velvera-step-nav">
+                    <button type="button" className="velvera-back-action" onClick={() => setStep(0)}>
+                      <ArrowLeft size={16} /> Indietro
+                    </button>
+                    <button
+                      type="button"
+                      className="velvera-continue-action"
+                      disabled={selectedServiceIds.length === 0}
+                      onClick={handleNext}
+                    >
+                      Continua
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 2: LUNGHEZZA CAPELLI & NOTE */}
+              {step === 2 && (
+                <div>
+                  <div className="velvera-step-header">
+                    <div className="velvera-step-meta">Passo 2 di 5 · Specifiche</div>
+                    <h2 className="velvera-step-heading">Dettagli del capello</h2>
+                    <p className="velvera-step-sub">
+                      Aiutaci a stimare tempo e dosaggio ideale per il tuo styling.
+                    </p>
+                  </div>
+
+                  <div className="velvera-form-card">
+                    <div>
+                      <label style={{ display: 'block', fontSize: 14, fontWeight: 600, color: 'var(--velvera-dark)', marginBottom: 10 }}>
+                        Lunghezza attuale dei capelli *
+                      </label>
+                      <div className="velvera-hair-grid">
+                        {HAIR_LENGTH_OPTIONS.map((opt) => (
+                          <div
+                            key={opt.id}
+                            className={`velvera-hair-card ${hairLength === opt.id ? 'selected' : ''}`}
+                            onClick={() => setHairLength(opt.id)}
+                          >
+                            <span className="velvera-hair-title">{opt.label}</span>
+                            <span className="velvera-hair-desc">{opt.desc}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <CleanInputField
+                      id="special-notes"
+                      type="textarea"
+                      label="Note speciali o trattamenti recenti"
+                      placeholder="Es. capelli trattati chimicamente, cute sensibile, solo spuntata..."
+                      value={specialNotes}
+                      onChange={setSpecialNotes}
+                      optional
+                      helperText="Indicazioni utili per Martina nella preparazione della postazione."
+                    />
+                  </div>
+
+                  <div className="velvera-step-nav">
+                    <button type="button" className="velvera-back-action" onClick={handleBack}>
+                      <ArrowLeft size={16} /> Indietro
+                    </button>
+                    <button type="button" className="velvera-continue-action" onClick={handleNext}>
+                      Continua
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 3: CALENDARIO E ORARIO */}
+              {step === 3 && (
+                <div>
+                  <div className="velvera-step-header">
+                    <div className="velvera-step-meta">Passo 3 di 5 · Disponibilità</div>
+                    <h2 className="velvera-step-heading">Scegli data e orario</h2>
+                    <p className="velvera-step-sub">
+                      Seleziona un giorno disponibile a partire da 7 giorni da oggi.
+                    </p>
+                  </div>
+
+                  <CalendarPickerCard
+                    selectedDate={selectedDate}
+                    selectedSlot={selectedSlot}
+                    onDateChange={(d) => {
+                      setSelectedDate(d);
+                      setSelectedSlot('');
+                    }}
+                    onSlotChange={setSelectedSlot}
+                    minDaysNotice={7}
+                  />
+
+                  <div className="velvera-step-nav">
+                    <button type="button" className="velvera-back-action" onClick={handleBack}>
+                      <ArrowLeft size={16} /> Indietro
+                    </button>
+                    <button
+                      type="button"
+                      className="velvera-continue-action"
+                      disabled={!selectedDate || !selectedSlot}
+                      onClick={handleNext}
+                    >
+                      Continua
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 4: RECAPITI CLIENTE */}
+              {step === 4 && (
+                <div>
+                  <div className="velvera-step-header">
+                    <div className="velvera-step-meta">Passo 4 di 5 · Dati Personali</div>
+                    <h2 className="velvera-step-heading">I tuoi recapiti</h2>
+                    <p className="velvera-step-sub">
+                      I dati necessari per verificare e confermare la tua prenotazione.
+                    </p>
+                  </div>
+
+                  <div className="velvera-form-card">
+                    <CleanInputField
+                      id="client-name"
+                      label="Nome e cognome *"
+                      placeholder="Es. Giulia Rossi"
+                      value={contactData.name}
+                      onChange={(val) => setContactData({ ...contactData, name: val })}
+                      error={errors.name}
+                    />
+
+                    <CleanInputField
+                      id="client-phone"
+                      type="tel"
+                      label="Cellulare WhatsApp *"
+                      prefix="+39"
+                      placeholder="340 1234567"
+                      value={contactData.phone}
+                      onChange={(val) => setContactData({ ...contactData, phone: val })}
+                      error={errors.phone}
+                      helperText="Riceverai la conferma di disponibilità su questo numero."
+                    />
+
+                    <CleanInputField
+                      id="client-instagram"
+                      label="Profilo Instagram"
+                      prefix="@"
+                      placeholder="giuliarossi"
+                      value={contactData.instagram}
+                      onChange={(val) => setContactData({ ...contactData, instagram: val })}
+                      optional
+                      helperText="Facoltativo: utile se ci hai scoperto su Instagram."
+                    />
+                  </div>
+
+                  <div className="velvera-step-nav">
+                    <button type="button" className="velvera-back-action" onClick={handleBack}>
+                      <ArrowLeft size={16} /> Indietro
+                    </button>
+                    <button type="button" className="velvera-continue-action" onClick={handleNext}>
+                      Vedi riepilogo
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 5: RIEPILOGO COMPLETO */}
+              {step === 5 && (
+                <div>
+                  <div className="velvera-step-header">
+                    <div className="velvera-step-meta">Passo 5 di 5 · Conferma</div>
+                    <h2 className="velvera-step-heading">Rivedi la richiesta</h2>
+                    <p className="velvera-step-sub">
+                      Controlla tutti i dettagli prima di inviare la richiesta a Martina.
+                    </p>
+                  </div>
+
+                  <SummaryBentoCard
+                    services={selectedServices}
+                    hairLength={HAIR_LENGTH_OPTIONS.find((h) => h.id === hairLength)?.label}
+                    specialNotes={specialNotes}
+                    date={selectedDate}
+                    slot={selectedSlot}
+                    contact={contactData}
+                  />
+
+                  <div className="velvera-step-nav">
+                    <button type="button" className="velvera-back-action" onClick={handleBack}>
+                      <ArrowLeft size={16} /> Indietro
+                    </button>
+                    <button type="button" className="velvera-continue-action" onClick={handleFinishBooking}>
+                      Invia prenotazione
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* SIDEBAR RIEPILOGO STICKY (STILE BOOKING CHECKOUT VELVERA) */}
+            <aside className="velvera-flow-sidebar">
+              <div className="velvera-sidebar-card">
+                <h4 className="velvera-sidebar-title">Riepilogo sessione</h4>
+
+                <div className="velvera-sidebar-items">
+                  {selectedServices.length === 0 ? (
+                    <p className="velvera-sidebar-empty">
+                      Nessun servizio selezionato al momento.
+                    </p>
+                  ) : (
+                    selectedServices.map((s) => (
+                      <div key={s.id} className="velvera-sidebar-row">
+                        <span>{s.title}</span>
+                        <strong>{s.price}</strong>
+                      </div>
+                    ))
+                  )}
+
+                  {selectedDate && (
+                    <div className="velvera-sidebar-row" style={{ paddingTop: 8, borderTop: '1px dashed var(--velvera-border)' }}>
+                      <span>Data</span>
+                      <strong>{selectedDate}</strong>
+                    </div>
+                  )}
+
+                  {selectedSlot && (
+                    <div className="velvera-sidebar-row">
+                      <span>Orario</span>
+                      <strong>ore {selectedSlot}</strong>
+                    </div>
+                  )}
+
+                  {selectedServices.length > 0 && (
+                    <div className="velvera-sidebar-row total">
+                      <span>Totale stimato</span>
+                      <span>
+                        {selectedServices.reduce((sum, s) => sum + parseInt(s.price.replace('€', '')), 0)}€
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </aside>
+          </div>
+        )}
+
+        {/* STEP 6: SCHERMATA FINALE DI SUCCESSO */}
+        {step === 6 && (
+          <div className="velvera-success-panel">
+            <h2 className="velvera-success-title">Richiesta registrata!</h2>
+            <p className="velvera-success-desc">
+              Grazie <strong>{contactData.name}</strong>. Abbiamo memorizzato la tua richiesta di appuntamento per il giorno{' '}
+              <strong>{selectedDate}</strong> alle ore <strong>{selectedSlot}</strong>.
             </p>
-          </section>
 
-          {/* Simple Clean Policies */}
-          <section className="clean-policies-grid">
-            <div className="clean-policy-item">
-              <div className="clean-policy-title">Orari serali e weekend</div>
-              <div className="clean-policy-desc">
-                Disponibile dal lunedì al venerdì dalle 19:00 alle 21:00, e tutto il giorno il sabato e la domenica.
+            <div className="velvera-success-recap">
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--velvera-muted)' }}>Trattamenti:</span>
+                <strong>{selectedServices.map((s) => s.title).join(', ')}</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--velvera-muted)' }}>Recapito:</span>
+                <strong>{contactData.name} ({contactData.phone})</strong>
               </div>
             </div>
 
-            <div className="clean-policy-item">
-              <div className="clean-policy-title">Prenota con almeno 1 settimana di anticipo</div>
-              <div className="clean-policy-desc">
-                Il calendario ti mostra le date disponibili a partire da 7 giorni da oggi, per organizzare al meglio il tuo trattamento.
-              </div>
-            </div>
-
-            <div className="clean-policy-item">
-              <div className="clean-policy-title">Ricevi conferma su WhatsApp</div>
-              <div className="clean-policy-desc">
-                Dopo aver inviato la richiesta, riceverai la conferma definitiva del tuo orario direttamente via messaggio entro 24 ore.
-              </div>
-            </div>
-          </section>
-
-          <StickyBottomActionBar
-            ctaText="Inizia prenotazione"
-            onCtaClick={() => setStep(1)}
-          />
-        </div>
-      )}
-
-      {/* STEP 1: SERVIZI */}
-      {step === 1 && (
-        <div>
-          <SegmentedProgressBar
-            currentStep={1}
-            totalSteps={5}
-            title="Seleziona i trattamenti"
-            subtitle="Scegli uno o più servizi per il tuo appuntamento."
-            onBack={() => setStep(0)}
-          />
-
-          <div className="step-viewport">
-            {SERVICES_CATALOG.map((service) => (
-              <SelectionPillCard
-                key={service.id}
-                id={service.id}
-                title={service.title}
-                description={service.description}
-                duration={service.duration}
-                price={service.price}
-                selected={selectedServiceIds.includes(service.id)}
-                onToggle={toggleService}
-              />
-            ))}
-          </div>
-
-          <StickyBottomActionBar
-            ctaText="Continua"
-            disabled={selectedServices.length === 0}
-            onCtaClick={handleNext}
-          />
-        </div>
-      )}
-
-      {/* STEP 2: LUNGHEZZA & NOTE */}
-      {step === 2 && (
-        <div>
-          <SegmentedProgressBar
-            currentStep={2}
-            totalSteps={5}
-            title="Dettagli del capello"
-            subtitle="Indica la lunghezza per stimare tempi e prodotti necessari per il tuo trattamento."
-            onBack={handleBack}
-          />
-
-          <div className="step-viewport">
-            <div>
-              <span style={{ fontSize: 13, fontWeight: 600, display: 'block', marginBottom: 8, color: 'var(--text-main)' }}>
-                Lunghezza attuale dei capelli *
-              </span>
-              <div className="clean-hair-grid">
-                {HAIR_LENGTH_OPTIONS.map((opt) => (
-                  <button
-                    key={opt.id}
-                    type="button"
-                    className={`clean-hair-chip ${hairLength === opt.id ? 'selected' : ''}`}
-                    onClick={() => setHairLength(opt.id)}
-                  >
-                    <span className="clean-hair-label">{opt.label}</span>
-                    <span className="clean-hair-desc">{opt.desc}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <CleanInputField
-              id="special-notes"
-              type="textarea"
-              label="Note speciali o trattamenti recenti"
-              placeholder="Es. ho fatto una decolorazione recente, ho la cute sensibile, vorrei solo una spuntata..."
-              value={specialNotes}
-              onChange={setSpecialNotes}
-              optional
-              helperText="Facoltativo: indicazioni utili per preparare la postazione."
-            />
-          </div>
-
-          <StickyBottomActionBar
-            ctaText="Continua"
-            onCtaClick={handleNext}
-          />
-        </div>
-      )}
-
-      {/* STEP 3: DATA & SLOT */}
-      {step === 3 && (
-        <div>
-          <SegmentedProgressBar
-            currentStep={3}
-            totalSteps={5}
-            title="Scegli data e orario"
-            subtitle="Feriali dalle 19:00 alle 21:00; sabato e domenica orario esteso."
-            onBack={handleBack}
-          />
-
-          <div className="step-viewport">
-            <CalendarPickerCard
-              selectedDate={selectedDate}
-              selectedSlot={selectedSlot}
-              onDateChange={(d) => {
-                setSelectedDate(d);
-                setSelectedSlot('');
-              }}
-              onSlotChange={setSelectedSlot}
-              minDaysNotice={7}
-            />
-          </div>
-
-          <StickyBottomActionBar
-            ctaText="Continua"
-            disabled={!selectedDate || !selectedSlot}
-            onCtaClick={handleNext}
-          />
-        </div>
-      )}
-
-      {/* STEP 4: CONTATTI */}
-      {step === 4 && (
-        <div>
-          <SegmentedProgressBar
-            currentStep={4}
-            totalSteps={5}
-            title="I tuoi recapiti"
-            subtitle="I dati necessari per verificare e confermare la tua prenotazione."
-            onBack={handleBack}
-          />
-
-          <div className="step-viewport">
-            <CleanInputField
-              id="client-name"
-              label="Nome e cognome *"
-              placeholder="Es. Giulia Rossi"
-              value={contactData.name}
-              onChange={(val) => setContactData({ ...contactData, name: val })}
-              error={errors.name}
-            />
-
-            <CleanInputField
-              id="client-phone"
-              type="tel"
-              label="Cellulare WhatsApp *"
-              prefix="+39"
-              placeholder="340 1234567"
-              value={contactData.phone}
-              onChange={(val) => setContactData({ ...contactData, phone: val })}
-              error={errors.phone}
-              helperText="Riceverai la conferma di disponibilità su questo numero."
-            />
-
-            <CleanInputField
-              id="client-instagram"
-              label="Profilo Instagram"
-              prefix="@"
-              placeholder="giuliarossi"
-              value={contactData.instagram}
-              onChange={(val) => setContactData({ ...contactData, instagram: val })}
-              optional
-              helperText="Utile se sei arrivata dal profilo di Martina."
-            />
-          </div>
-
-          <StickyBottomActionBar
-            ctaText="Vedi riepilogo"
-            onCtaClick={handleNext}
-          />
-        </div>
-      )}
-
-      {/* STEP 5: REVIEW */}
-      {step === 5 && (
-        <div>
-          <SegmentedProgressBar
-            currentStep={5}
-            totalSteps={5}
-            title="Rivedi la richiesta"
-            subtitle="Controlla tutti i dati prima di inviare la richiesta a Martina."
-            onBack={handleBack}
-          />
-
-          <div className="step-viewport">
-            <SummaryBentoCard
-              services={selectedServices}
-              hairLength={HAIR_LENGTH_OPTIONS.find((h) => h.id === hairLength)?.label}
-              specialNotes={specialNotes}
-              date={selectedDate}
-              slot={selectedSlot}
-              contact={contactData}
-            />
-          </div>
-
-          <StickyBottomActionBar
-            ctaText="Invia prenotazione"
-            onCtaClick={handleFinishBooking}
-          />
-        </div>
-      )}
-
-      {/* STEP 6: CLEAN SUCCESS */}
-      {step === 6 && (
-        <div className="clean-success-view">
-          <h2 className="clean-success-headline">Richiesta inviata!</h2>
-          <p className="clean-success-desc">
-            Grazie <strong>{contactData.name}</strong>. I dettagli della tua richiesta per il{' '}
-            <strong>{selectedDate}</strong> alle ore <strong>{selectedSlot}</strong> sono pronti.
-          </p>
-
-          <div className="clean-success-recap-box">
-            <div className="clean-recap-row">
-              <span className="clean-recap-key">Trattamenti</span>
-              <span className="clean-recap-val">{selectedServices.map((s) => s.title).join(', ')}</span>
-            </div>
-            <div className="clean-recap-row">
-              <span className="clean-recap-key">Data e orario</span>
-              <span className="clean-recap-val">{selectedDate} alle ore {selectedSlot}</span>
-            </div>
-            <div className="clean-recap-row">
-              <span className="clean-recap-key">Contatto</span>
-              <span className="clean-recap-val">{contactData.name} ({contactData.phone})</span>
-            </div>
-          </div>
-
-          <div className="clean-whatsapp-action-box">
             <a
               href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="clean-whatsapp-btn"
+              className="velvera-success-cta"
             >
-              <span>Avvisa Martina su WhatsApp</span>
+              <MessageCircle size={18} />
+              <span>Conferma con Martina su WhatsApp</span>
             </a>
-            <button type="button" onClick={handleReset} className="clean-reset-btn">
+
+            <button
+              type="button"
+              className="velvera-back-action"
+              onClick={handleReset}
+              style={{ marginTop: 8 }}
+            >
               Effettua un'altra richiesta
             </button>
           </div>
-        </div>
-      )}
+        )}
+      </main>
     </div>
   );
 }

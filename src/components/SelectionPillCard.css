@@ -1,67 +1,80 @@
+/* ==========================================================================
+   SELECTION PILL CARD - VELVERA CARD STYLING
+   Card radius 20px - 24px, subtle borders, warm hover, orange check
+   ========================================================================== */
+
 .clean-service-card {
   width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 20px;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  background-color: var(--velvera-bg-page);
+  border: 1px solid var(--velvera-border-subtle);
+  border-radius: var(--radius-container);
   text-align: left;
-  transition: all var(--transition-smooth);
+  transition: all var(--transition-fast);
   position: relative;
   cursor: pointer;
+  box-shadow: var(--shadow-subtle);
 }
 
 .clean-service-card:hover {
-  border-color: var(--border-hover);
-  background-color: var(--bg-subtle);
+  background-color: var(--velvera-bg-soft);
+  border-color: rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
 }
 
 .clean-service-card.selected {
-  border-color: var(--accent-blue);
-  background-color: var(--bg-card);
-  box-shadow: 0 0 0 1px var(--accent-blue), 0 4px 16px rgba(1, 120, 255, 0.08);
+  border-color: var(--velvera-accent);
+  background-color: var(--velvera-accent-light);
+  box-shadow: 0 0 0 1px var(--velvera-accent), 0 4px 18px rgba(255, 106, 0, 0.1);
 }
 
 .clean-card-body {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   flex: 1;
 }
 
 .clean-card-title-row {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
 }
 
 .clean-card-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-main);
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--velvera-dark-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.3;
 }
 
 .clean-card-price {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--velvera-dark-primary);
+  letter-spacing: -0.02em;
 }
 
 .clean-card-desc {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.45;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--velvera-text-muted);
+  line-height: 1.5;
+  letter-spacing: -0.015em;
 }
 
 .clean-card-meta {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin-top: 4px;
 }
 
@@ -71,29 +84,37 @@
   gap: 5px;
   font-size: 12px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--velvera-text-muted);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.clean-service-card.selected .clean-card-time {
+  background: rgba(255, 106, 0, 0.12);
+  color: var(--velvera-accent);
 }
 
 .clean-card-indicator {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: var(--radius-pill);
-  border: 1.5px solid var(--border-subtle);
+  border: 1.5px solid var(--velvera-border-subtle);
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #ffffff;
   flex-shrink: 0;
+  transition: all var(--transition-fast);
   margin-top: 2px;
-  transition: all var(--transition-smooth);
-  background: var(--bg-card);
 }
 
 .clean-service-card:hover .clean-card-indicator {
-  border-color: var(--text-light);
+  border-color: rgba(0, 0, 0, 0.25);
 }
 
 .clean-service-card.selected .clean-card-indicator {
-  background-color: var(--accent-blue);
-  border-color: var(--accent-blue);
-  color: var(--text-white);
+  border-color: var(--velvera-accent);
+  background-color: var(--velvera-accent);
 }

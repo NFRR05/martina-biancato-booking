@@ -1,22 +1,27 @@
+/* ==========================================================================
+   STICKY BOTTOM ACTION BAR - VELVERA CTA BUTTON
+   Accent Orange #ff6a00, radius 14px, minimal floating bar
+   ========================================================================== */
+
 .clean-action-bar {
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 540px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid var(--border-subtle);
-  border-left: 1px solid var(--border-card);
-  border-right: 1px solid var(--border-card);
-  border-bottom-left-radius: var(--radius-2xl);
-  border-bottom-right-radius: var(--radius-2xl);
+  max-width: 580px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid var(--velvera-border-subtle);
+  border-left: 1px solid var(--velvera-border-subtle);
+  border-right: 1px solid var(--velvera-border-subtle);
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
   padding: 16px 24px;
   padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   z-index: 100;
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-bottom-bar);
   display: flex;
 }
 
@@ -26,6 +31,7 @@
     border-right: none;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    max-width: 100%;
   }
 }
 
@@ -34,25 +40,34 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--accent-blue);
-  color: var(--text-white);
+  gap: 8px;
+  background-color: var(--velvera-accent);
+  color: #ffffff;
   padding: 15px 24px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-button-large);
+  font-family: var(--font-sans);
   font-size: 16px;
   font-weight: 600;
-  letter-spacing: -0.015em;
-  transition: all var(--transition-smooth);
-  min-height: 50px;
+  letter-spacing: -0.02em;
+  transition: all var(--transition-fast);
+  min-height: 52px;
+  box-shadow: 0 4px 14px rgba(255, 106, 0, 0.22);
 }
 
 .clean-action-btn:hover:not(:disabled) {
-  background-color: #0169e0;
+  background-color: var(--velvera-accent-hover);
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 106, 0, 0.32);
+}
+
+.clean-action-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .clean-action-btn:disabled {
-  background-color: var(--border-subtle);
-  color: var(--text-light);
+  background-color: #f0f0f2;
+  color: #b5b5bc;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }

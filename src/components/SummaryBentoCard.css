@@ -1,24 +1,31 @@
+/* ==========================================================================
+   SUMMARY BENTO CARD - VELVERA EDITORIAL RECAP
+   Warm card background, serif headings, clean divider rows
+   ========================================================================== */
+
 .clean-summary-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
+  background: var(--velvera-bg-page);
+  border: 1px solid var(--velvera-border-subtle);
+  border-radius: var(--radius-card-large);
   overflow: hidden;
+  box-shadow: var(--shadow-subtle);
 }
 
 .clean-summary-header {
-  padding: 18px 22px;
-  background: var(--bg-subtle);
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 20px 24px;
+  background: var(--velvera-bg-card-warm);
+  border-bottom: 1px solid var(--velvera-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .clean-summary-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-main);
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--velvera-dark-primary);
+  letter-spacing: -0.03em;
 }
 
 .clean-summary-list {
@@ -30,8 +37,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 14px 22px;
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--velvera-border-subtle);
   gap: 16px;
 }
 
@@ -40,16 +47,18 @@
 }
 
 .clean-summary-key {
-  font-size: 13px;
-  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--velvera-text-muted);
   font-weight: 500;
   flex-shrink: 0;
 }
 
 .clean-summary-val {
-  font-size: 14px;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
   font-weight: 600;
-  color: var(--text-main);
+  color: var(--velvera-dark-primary);
   text-align: right;
   word-break: break-word;
 }
@@ -57,25 +66,36 @@
 .clean-summary-services {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  align-items: flex-end;
+  gap: 6px;
+  text-align: right;
 }
 
 .clean-summary-service-item {
-  font-size: 13px;
+  font-family: var(--font-sans);
+  font-size: 14px;
   font-weight: 600;
-  color: var(--text-main);
+  color: var(--velvera-dark-primary);
 }
 
-.clean-summary-note {
-  margin-top: 16px;
-  padding: 14px 18px;
-  background-color: var(--bg-subtle);
-  border-radius: var(--radius-lg);
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.5;
+.clean-summary-notice {
+  margin-top: 18px;
+  padding: 16px 18px;
+  background: var(--velvera-bg-card-warm);
+  border: 1px solid rgba(255, 106, 0, 0.18);
+  border-radius: var(--radius-card-mid);
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
+}
+
+.clean-summary-notice-icon {
+  color: var(--velvera-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.clean-summary-notice-text {
+  font-size: 13px;
+  color: var(--velvera-text-body);
+  line-height: 1.45;
 }

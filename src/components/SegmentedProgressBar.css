@@ -1,18 +1,23 @@
+/* ==========================================================================
+   SEGMENTED PROGRESS BAR - VELVERA EDITORIAL STYLE
+   ========================================================================== */
+
 .clean-stepper {
-  padding: 18px 24px 16px 24px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-subtle);
-  position: relative;
-  z-index: 10;
+  padding: 20px 24px 18px 24px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--velvera-border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
 .clean-stepper-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .clean-back-btn {
@@ -21,65 +26,77 @@
   gap: 6px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-muted);
-  padding: 6px 12px;
+  color: var(--velvera-text-muted);
+  padding: 6px 14px;
   border-radius: var(--radius-pill);
-  background: var(--bg-subtle);
-  transition: all var(--transition-smooth);
+  background: var(--velvera-bg-card-light);
+  border: 1px solid var(--velvera-border-subtle);
+  transition: all var(--transition-fast);
 }
 
 .clean-back-btn:hover {
-  background: var(--bg-hover);
-  color: var(--text-main);
+  background: var(--velvera-bg-card-warm);
+  color: var(--velvera-dark-primary);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 .clean-step-indicator {
   font-size: 12px;
   font-weight: 600;
-  color: var(--text-light);
+  letter-spacing: -0.01em;
+  color: var(--velvera-text-muted);
+  background: var(--velvera-accent-light);
+  color: var(--velvera-accent);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
 }
 
 .clean-step-indicator strong {
-  color: var(--text-main);
+  color: var(--velvera-accent);
+  font-weight: 700;
 }
 
 .clean-stepper-bars {
   display: flex;
   gap: 6px;
-  height: 4px;
+  height: 3px;
 }
 
 .clean-stepper-bar {
   flex: 1;
   height: 100%;
-  background-color: var(--border-subtle);
+  background-color: var(--velvera-border-subtle);
   border-radius: var(--radius-pill);
-  transition: background-color var(--transition-smooth);
+  transition: background-color var(--transition-fast);
 }
 
 .clean-stepper-bar.filled {
-  background-color: var(--accent-blue);
+  background-color: var(--velvera-dark-primary);
 }
 
 .clean-stepper-bar.current {
-  background-color: var(--text-main);
+  background-color: var(--velvera-accent);
 }
 
 .clean-stepper-titles {
   margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .clean-stepper-heading {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-main);
-  letter-spacing: -0.03em;
-  line-height: 1.25;
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.25em;
+  color: var(--velvera-dark-primary);
 }
 
 .clean-stepper-sub {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 4px;
-  line-height: 1.45;
+  font-size: 14px;
+  color: var(--velvera-text-muted);
+  line-height: 1.5;
+  letter-spacing: -0.015em;
 }
