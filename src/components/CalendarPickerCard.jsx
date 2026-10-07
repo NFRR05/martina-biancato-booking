@@ -74,7 +74,7 @@ export default function CalendarPickerCard({
         type="button"
         disabled={isDisabled}
         onClick={() => onDateChange(dateStr)}
-        className={`clean-cal-day-cell ${isSelected ? 'selected' : ''}`}
+        className={`clean-cal-day-cell ${isDisabled ? 'disabled' : 'available'} ${isSelected ? 'selected' : ''}`}
         aria-label={`Giorno ${d}`}
       >
         {d}

@@ -90,17 +90,19 @@
   cursor: default;
 }
 
-.clean-cal-day-cell.disabled {
-  color: #a8a8af;
-  background-color: #f3f3f5;
-  border-color: #ebebee;
-  cursor: not-allowed;
-  opacity: 0.8;
+.clean-cal-day-cell.disabled,
+.clean-cal-day-cell:disabled {
+  color: #b0b0b8 !important;
+  background-color: #f2f2f5 !important;
+  border-color: #e8e8ed !important;
+  cursor: not-allowed !important;
+  opacity: 0.75;
 }
 
-.clean-cal-day-cell.available {
+.clean-cal-day-cell.available:not(:disabled) {
   background-color: #ffffff;
   border-color: #e5e5ea;
+  color: var(--velvera-dark);
 }
 
 .clean-cal-day-cell.available:hover:not(.selected) {

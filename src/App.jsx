@@ -132,6 +132,10 @@ export default function App() {
   const isNextDisabled = () => {
     if (step === 1) return selectedServiceIds.length === 0;
     if (step === 2) return !selectedDate || !selectedSlot;
+    if (step === 3) {
+      const cleanPhone = contactData.phone.replace(/[^0-9+]/g, '');
+      return !contactData.name.trim() || cleanPhone.length < 8;
+    }
     return false;
   };
 
